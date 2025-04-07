@@ -18,10 +18,12 @@ This project is aimed at advanced users and partners who want to automate tasks 
 
 ## 📁 Project Structure
 * WindowsServiceExample is your windows service. Check in program.cs the start routine. Use Debug to code and always compile in Release (x64).
+  
 * Doc.ECM.ApiHelper.Static is our example API Helper. With this class you can query and use our API endpoints. Check the API swagger for more information about our endpoints.
 
 ## Limits
 Be sure to use one token until the expiration date before asking for a new one. This project already handle this for you. There is a limit that we are going to introduce in the future.
+
 Respect the call limit. Do not perform lots of API calls (1440 max per day). The only exception is the Object Save endpoint, that can be called as many times as you want, but only to perform real updates (that is, changing at least one value).
 
 ## 🚀 Getting Started
