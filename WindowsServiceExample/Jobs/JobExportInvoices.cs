@@ -1,24 +1,29 @@
-﻿using FluentScheduler;
+﻿using Doc.ECM.Extension.SyncExample.Traitments;
+using FluentScheduler;
 using System;
 using System.Web.Hosting;
 using WindowsServiceExample.ServiceLogger;
 
-namespace WindowsServiceExample.Execution
+namespace WindowsServiceExample.Jobs
 {
-    public class ExportJob : IJob, IRegisteredObject
+    internal class JobExportInvoices : IJob, IRegisteredObject
     {
+        private readonly LogHelper serviceLog = new LogHelper("JobExportInvoices");
+
         private readonly object _lock = new object();
 
         private bool _shuttingDown;
-        private readonly LogHelper serviceLog = new LogHelper("YourCompanyService");
 
-        public ExportJob()
+        public JobExportInvoices()
         {
             // Register this job with the hosting environment.
-            // Allows for a more graceful stop of the job, in the case of IIS shutting down.
+            //    // Allows for a more graceful stop of the job, in the case of IIS shutting down.
             HostingEnvironment.RegisterObject(this);
         }
 
+        /// <summary>
+        /// This method is called by the FluentScheduler when the job should start, define what the job should do here.
+        /// </summary>
         public void Execute()
         {
             try
@@ -29,18 +34,16 @@ namespace WindowsServiceExample.Execution
                     {
                         return;
                     }
-                    serviceLog.Log(LogLevel.Info, "Starting export job...");
-                    var yourCompanyExecutionProcess = new YourCompanyExecutionProcess();
-                    yourCompanyExecutionProcess.InvoiceExport();
-                    serviceLog.Log(LogLevel.Info, "Export job finished correctly");
+                    serviceLog.Log(LogLevel.Info, "Job traitment Started");
+                    TraitmentExportInvoice traitment = new TraitmentExportInvoice();
+                    traitment.ProcessDocumentsToExport();
+                    serviceLog.Log(LogLevel.Info, "Job traitment Finished");
                 }
             }
             catch (Exception ex)
             {
-                serviceLog.Log(LogLevel.Error, ex.Message);
-                throw new Exception(ex.Message);
+                serviceLog.Log(LogLevel.Error, $"Job Execution Error: {ex.Message}");
             }
-
         }
 
         public void Stop(bool immediate)

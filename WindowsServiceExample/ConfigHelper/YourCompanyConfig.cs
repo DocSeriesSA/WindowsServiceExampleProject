@@ -6,7 +6,8 @@ namespace WindowsServiceExample.ConfigHelper
     {
         public DocECMAPIParametersDTO DocECMParameters { get; set; } = new DocECMAPIParametersDTO();
         public ProcessParameters ProcessParameters { get; set; } = new ProcessParameters();
+        public YourAPIConfig YourAPIConfig { get; set; } = new YourAPIConfig();
 
-        // Add here your configuration (your apis, your parameters, etc.)
+        // Add anything else you need
     }
 }

@@ -1,4 +1,4 @@
-﻿using WindowsServiceExample.Execution;
+﻿using Doc.ECM.Extension.SyncExample.Traitments;
 
 namespace WindowsServiceExample
 {
@@ -18,8 +18,8 @@ namespace WindowsServiceExample
                 ServiceBase.Run(ServicesToRun);
             #else
                 // For development and debug
-                var yourCompanyExecutionProcess = new YourCompanyExecutionProcess();
-                yourCompanyExecutionProcess.InvoiceExport();
+                var yourCompanyExecutionProcess = new TraitmentSyncInternalTableData();
+                yourCompanyExecutionProcess.SyncTables();
                 System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
             #endif
         }

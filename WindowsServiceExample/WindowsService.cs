@@ -1,7 +1,7 @@
 ﻿using FluentScheduler;
 using System.ServiceProcess;
 using WindowsServiceExample.ConfigHelper;
-using WindowsServiceExample.Execution;
+using WindowsServiceExample.Jobs;
 using WindowsServiceExample.ServiceLogger;
 
 namespace WindowsServiceExample
