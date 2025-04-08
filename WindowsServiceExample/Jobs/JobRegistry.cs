@@ -18,7 +18,9 @@ namespace WindowsServiceExample.Jobs
             {
                 Schedule<JobExportInvoices>().ToRunNow().AndEvery(Convert.ToInt32(intervalInMinutes)).Minutes();
                 serviceLog.Log(LogLevel.Info,$"Traitment export documents jobs to run now and every {intervalInMinutes} minutes");
-                Schedule<JobSyncTables>().ToRunNow().AndEvery(Convert.ToInt32(intervalInMinutes)).Minutes();
+
+                // Wait a minute before starting the next job. This is required to get one token for Doc.ECM, so they do not get invalidated.
+                Schedule<JobSyncTables>().ToRunOnceAt(DateTime.Now.AddMinutes(1)).AndEvery(Convert.ToInt32(intervalInMinutes)).Minutes();
                 serviceLog.Log(LogLevel.Info, $"Traitment sync documents paiement job to run at every {intervalInMinutes} minutes");
             }
             catch (Exception ex)
