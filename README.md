@@ -604,8 +604,6 @@ Si vous souhaitez, je peux :
 
 ---- Spanish details----
 
-![C#](https://img.shields.io/badge/language-C%23-blue) ![.NET Framework](https://img.shields.io/badge/.NET-Framework%204.8.1-brightgreen)
-
 # Doc.ECM Windows Service Example — Visual Studio C#
 
 Un proyecto de ejemplo que muestra cómo construir un Servicio de Windows para integrar y automatizar acciones con la API de Doc.ECM. Este servicio demuestra patrones de integración avanzados: autenticación y gestión de tokens, sincronización de tablas internas, exportación de documentos a una API externa y programación mediante FluentScheduler.
@@ -919,3 +917,4 @@ Si quieres, puedo:
 - Generar un ejemplo personalizado de `config.json` con tus URLs.
 - Escribir un script PowerShell para instalar/desinstalar el servicio.
 - Explicar en detalle un método específico de DocECMApiHelper (por ejemplo SaveDocument, AdvancedSearch) o traducir comentarios adicionales del código al español.
+
